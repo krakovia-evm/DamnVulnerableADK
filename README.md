@@ -14,7 +14,7 @@ No coding skill required.
     - rename `.env.example` to `.env`
     - add your Gemini API key to the `GOOGLE_API_KEY` variable in the `.env` file
 - run the project
-    - `uv run .\src\adk\main.py`
+    - `uv run .\src\damnvulnerableadk\main.py`
 
 Alternatively, you can run the project using adk web
 - activate the virtual environment

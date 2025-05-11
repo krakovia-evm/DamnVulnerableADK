@@ -2,8 +2,8 @@ import asyncio
 from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
 from google.genai import types
-from adk.agent import root_agent
-from adk.database import init_db
+from damnvulnerableadk.agent import root_agent
+from damnvulnerableadk.database import init_db
 from dotenv import load_dotenv
 
 # Load environment variables from .env file

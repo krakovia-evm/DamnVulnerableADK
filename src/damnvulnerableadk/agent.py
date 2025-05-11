@@ -1,5 +1,5 @@
 from google.adk.agents import Agent
-from adk.database import access_database
+from damnvulnerableadk.database import access_database
 
 DB_SCHEMA = """
 users (
