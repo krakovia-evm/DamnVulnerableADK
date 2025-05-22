@@ -11,7 +11,7 @@ def init_db():
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS users (
             user_id INTEGER PRIMARY KEY AUTOINCREMENT,
-            username TEXT NOT NULL,
+            username TEXT NOT NULL UNIQUE,
             password TEXT NOT NULL,
             phone_number TEXT NOT NULL,
             email TEXT NOT NULL,
@@ -27,7 +27,7 @@ def init_db():
 
     # insert sample data
     cursor.execute('''
-        INSERT INTO users (username, password, phone_number, email, residential_address, residential_city, residential_state, residential_zip, residential_country, age)
+        INSERT OR IGNORE INTO users (username, password, phone_number, email, residential_address, residential_city, residential_state, residential_zip, residential_country, age)
         VALUES
             ('john_doe', 'password123', '123-456-7890', 'john@example.com', '123 Main St', 'New York', 'NY', '10001', 'USA', 30),
             ('jane_doe', 'password456', '987-654-3210', 'jane@example.com', '456 Elm St', 'Los Angeles', 'CA', '90001', 'USA', 25)

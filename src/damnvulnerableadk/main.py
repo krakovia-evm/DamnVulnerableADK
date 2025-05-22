@@ -18,7 +18,7 @@ async def run_agent(message, temp_service=None, session=None):
             agent=root_agent,
             session_service=temp_service
         )
-        session = temp_service.create_session(
+        session = await temp_service.create_session(
             app_name="robot",
             user_id="user",
         )
@@ -46,7 +46,7 @@ async def conversation_loop():
     
     # Initialize session service and session for the conversation
     temp_service = InMemorySessionService()
-    session = temp_service.create_session(
+    session = await temp_service.create_session(
         app_name="robot",
         user_id="user",
     )
