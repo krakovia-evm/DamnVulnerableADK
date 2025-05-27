@@ -2,7 +2,7 @@
 
 Simple ADK A2A implementation with SQL injection vulnerability showcasing the dangers of LLMs with open database access and weak system prompt.
 
-![Demo Video](https://files.catbox.moe/tp20d1.mp4)
+[📹 Demo Video](https://files.catbox.moe/tp20d1.mp4)
 
 ## 🚨 What's the Risk?
 
