@@ -1,8 +1,6 @@
 import sqlite3
-import logging
 import os
 
-logging.basicConfig(level=logging.INFO)
 DATABASE_FILE = os.path.join(os.path.dirname(__file__), "adk.db")
 
 def init_db():
@@ -35,7 +33,7 @@ def init_db():
     conn.commit()
     conn.close()
 
-def access_database(query:str) -> dict:
+def access_database(query: str) -> dict:
     conn = sqlite3.connect(DATABASE_FILE)
     cursor = conn.cursor()
     cursor.execute(query)

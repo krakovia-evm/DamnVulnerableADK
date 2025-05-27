@@ -1,47 +1,77 @@
 # DamnVulnerableADK
-Simple ADK implementation with an sqlite3 db and SQL injection vulnerability
 
-This is an exercise project to learn about ADK Framework and the security of those AI Agents.
+Simple ADK A2A implementation with SQL injection vulnerability showcasing the dangers of LLMs with open database access and weak system prompt.
 
-No coding skill required.
+## 🚨 What's the Risk?
 
-## Installation
-- create a virtual environment
-    - `uv venv`
-- install dependencies
-    - `uv sync`
-- configure your Gemini API key
-    - rename `.env.example` to `.env`
-    - add your Gemini API key to the `GOOGLE_API_KEY` variable in the `.env` file
-- run the project
-    - `uv run .\src\damnvulnerableadk\main.py`
+When AI agents have direct access to databases, they can become attack vectors for:
+- **Data exfiltration** through prompt manipulation
+- **SQL injection** via crafted queries  
+- **Unauthorized access** to sensitive information
 
-Alternatively, you can run the project using adk web
-- activate the virtual environment
-    - `source venv/bin/activate` (linux) or `.\venv\Scripts\activate` (win)
-- move to the src directory
-    - `cd src`
-- run adk web
-    - `adk web`
-- open the browser and go to `http://localhost:8000`
+When AI agents have a weak system prompt, they can be tricked into executing harmful actions like:
+- **Executing arbitrary SQL commands if the code is vulnerable**
+- **Exposing sensitive data** in responses
+- **Bypassing security measures** through prompt injection
+- **Dropping tables** through crafted prompts
 
-## Target
-- make the bot leak sensitive information about the users through the console/chat
-- use SQL injection to execute arbitrary query
-- fix the issues
+## 🛠️ Installation
 
-## Rules
-- the solution/data MUST BE a text message from the agent (final answer)
-- Function calls output in console are NOT considered a solution
+1. **Setup environment**
+   ```bash
+   uv sync
+   ```
 
-## Tips
-- sometimes you can win even with a very simple prompt, no magic needed.
-- try common jailbreak techniques
-- restart the session often instead of keep trying
+2. **Configure API key**
+   ```bash
+   # Rename .env.example to .env
+   # Add your Gemini API key to GOOGLE_API_KEY variable
+   ```
 
-## Resources
-- [ADK Framework](https://google.github.io/adk-docs/events/#how-events-flow-generation-and-processing)
+3. **Run the project**
+   ### Client mode
+   ```bash
+   uv run src/damnvulnerableadk/main.py
+   ```
+   ### Chat mode (Chat with Database agent only)
+   ```bash
+   cd src
+   adk web
+   ```
+   ### API Server mode (Root agent can talk with Database agent)
+   ```bash
+   cd src
+   adk server
+   ```
+
+## 🎯 Your Mission
+
+**Make the bot leak sensitive user information through chat responses.**
+**Bonus if you can let it drop the table users.**
+
+### Rules
+- ✅ Sensitive data MUST appear in the **final agent response text**
+- ❌ Function call outputs in console do NOT count
+- ✅ Use SQL injection to execute arbitrary queries
+- ✅ Fix the vulnerabilities after exploitation
+
+### Tips
+- Sometimes simple prompts work - no magic needed
+- Try common jailbreak techniques
+- Restart sessions often instead of retrying
+- Target: usernames, passwords, emails, addresses
+
+## 🔧 The Vulnerability
+
+The `database.py` file contains intentional SQL injection flaws:
+- Direct query execution without parameterization
+- No input validation
+- Unrestricted database access
+
+## 📚 Resources
+
+- [ADK Framework](https://google.github.io/adk-docs/)
 - [L1B3RT4S](https://github.com/elder-plinius/L1B3RT4S)
-- [Pliny The Liberator](https://x.com/elder_plinius)
-- [SQL Injection](https://owasp.org/www-community/attacks/SQL_Injection)
+- [SQL Injection Guide](https://owasp.org/www-community/attacks/SQL_Injection)
 
+⚠️ **Educational purposes only.**
