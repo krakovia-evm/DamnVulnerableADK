@@ -2,11 +2,13 @@
 
 Simple ADK A2A implementation with SQL injection vulnerability showcasing the dangers of LLMs with open database access and weak system prompt.
 
+![Demo Video](https://files.catbox.moe/tp20d1.mp4)
+
 ## 🚨 What's the Risk?
 
 When AI agents have direct access to databases, they can become attack vectors for:
 - **Data exfiltration** through prompt manipulation
-- **SQL injection** via crafted queries  
+- **SQL injection** via crafted queries
 - **Unauthorized access** to sensitive information
 
 When AI agents have a weak system prompt, they can be tricked into executing harmful actions like:
